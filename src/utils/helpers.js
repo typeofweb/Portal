@@ -49,6 +49,9 @@ export function getMemberSubscription({member = {}}) {
 }
 
 export function isComplimentaryMember({member = {}}) {
+    if (!member) {
+        return false;
+    }
     const subscription = getMemberSubscription({member});
     if (subscription) {
         const {price} = subscription;
