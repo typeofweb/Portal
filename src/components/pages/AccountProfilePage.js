@@ -91,7 +91,7 @@ export default class AccountProfilePage extends React.Component {
         return (
             <header className='gh-portal-detail-header'>
                 <BackButton brandColor={this.context.brandColor} hidden={!this.context.lastPage} onClick={e => this.onBack(e)} />
-                <h3 className='gh-portal-main-title'>Account settings</h3>
+                <h3 className='gh-portal-main-title'>Ustawienia konta</h3>
             </header>
         );
     }
@@ -133,8 +133,8 @@ export default class AccountProfilePage extends React.Component {
             {
                 type: 'text',
                 value: state.name,
-                placeholder: 'Jamie Larson',
-                label: 'Name',
+                placeholder: 'Jan Kowalski',
+                label: 'Imię i nazwisko',
                 name: 'name',
                 required: true,
                 errorMessage: errors.name || ''
@@ -142,7 +142,7 @@ export default class AccountProfilePage extends React.Component {
             {
                 type: 'email',
                 value: state.email,
-                placeholder: 'jamie@example.com',
+                placeholder: 'karol@example.com',
                 label: 'Email',
                 name: 'email',
                 required: true,

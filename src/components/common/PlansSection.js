@@ -497,10 +497,10 @@ function PlanOptions({plans, selectedPlan, onPlanSelect, changePlan}) {
         switch (name) {
         case 'Free':
             displayName = name;
-            planDetails.feature = 'Free preview';
+            planDetails.feature = 'Darmowy';
             break;
         default:
-            displayName = interval === 'month' ? 'Monthly' : 'Yearly';
+            displayName = interval === 'month' ? 'Wsparcie miesięczne' : 'Wsparcie roczne';
             planDetails.feature = description || 'Full access';
             break;
         }
@@ -562,11 +562,11 @@ function PlanBenefits({product, plans, selectedPlan}) {
     let planBenefits = [];
     let planDescription = product.description;
     if (!product.description) {
-        planDescription = `Full access to ` + site.title;
+        planDescription = `Zawsze darmowy dostęp do całej treści ` + site.title;
     }
     if (selectedPlan === 'free') {
         planBenefits = [];
-        planDescription = `Free preview of ` + site.title;
+        planDescription = `Zawsze darmowy dostęp do całej treści ` + site.title;
     } else if (plan?.interval === 'month') {
         planBenefits = productBenefits.monthly;
     } else if (plan?.interval === 'year') {
@@ -707,7 +707,7 @@ function ChangePlanOptions({plans, selectedPlan, onPlanSelect, changePlan}) {
     return plans.map(({name, currency_symbol: currencySymbol, amount, description, interval, id}) => {
         const price = amount / 100;
         const isChecked = selectedPlan === id;
-        let displayName = interval === 'month' ? 'Monthly' : 'Yearly';
+        let displayName = interval === 'month' ? 'Wsparcie miesięczne' : 'Wsparcie roczne';
 
         let planClass = (isChecked ? 'gh-portal-plan-section checked' : 'gh-portal-plan-section');
         planClass += ' gh-portal-change-plan-section';

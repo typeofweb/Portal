@@ -34,50 +34,50 @@ const NotificationText = ({type, status, context}) => {
         const firstname = context.member.firstname || '';
         return (
             <p>
-                Welcome back{(firstname ? ', ' + firstname : '')}!<br />You've successfully signed in.
+                Witaj ponownie{(firstname ? ', ' + firstname : '')}!<br />Jesteś zalogowany/a.
             </p>
         );
     } else if (type === 'signin' && status === 'error') {
         return (
             <p>
-                Could not sign in. Login link expired. <a href={signinPortalLink} target="_parent">Click here to retry</a>
+                Niestety link do logowania wygasł. <a href={signinPortalLink} target="_parent">Ogarnij nowy link</a>
             </p>
         );
     } else if (type === 'signup' && status === 'success') {
         return (
             <p>
-                You've successfully subscribed to <br /><strong>{context.site.title}</strong>
+                Zapisałeś się do newslettera <br /><strong>{context.site.title}</strong>
             </p>
         );
     } else if (type === 'updateEmail' && status === 'success') {
         return (
             <p>
-                Success! Your email is updated.
+                Sukces! Email zaktualizowany.
             </p>
         );
     } else if (type === 'updateEmail' && status === 'error') {
         return (
             <p>
-                Could not update email! Invalid link.
+                Niestety link jest niepoprawny.
             </p>
         );
     } else if (type === 'signup' && status === 'error') {
         return (
             <p>
-                Signup error: Invalid link <br /><a href={singupPortalLink} target="_parent">Click here to retry</a>
+                Niestety link jest niepoprawny <br /><a href={singupPortalLink} target="_parent">Ogarnij nowy link</a>
             </p>
         );
     } else if (type === 'stripe:checkout' && status === 'success') {
         if (context.member) {
             return (
                 <p>
-                    Success! Your account is fully activated, you now have access to all content.
+                    Sukces! Twoje konto jest teraz w pełni aktywne i wspierasz <strong>{context.site.title}</strong>.
                 </p>
             );
         }
         return (
             <p>
-                Success! Check your email for magic link to sign-in.
+                Sukces! Sprawdź maila aby się zalogować.
             </p>
         );
     } else if (type === 'stripe:checkout' && status === 'warning') {
@@ -85,19 +85,19 @@ const NotificationText = ({type, status, context}) => {
         if (context.member) {
             return (
                 <p>
-                    Plan upgrade was cancelled.
+                    Wsparcie zostało anulowane.
                 </p>
             );
         }
         return (
             <p>
-                Plan checkout was cancelled.
+                Wsparcie zostało anulowane.
             </p>
         );
     }
     return (
         <p>
-            {status === 'success' ? 'Success' : 'Error'}
+            {status === 'success' ? 'Sukces' : 'Błąd'}
         </p>
     );
 };
@@ -161,7 +161,7 @@ class NotificationContent extends React.Component {
                 <div className={`gh-portal-notification${statusClass}${slideClass}`} onAnimationEnd={e => this.onAnimationEnd(e)}>
                     {(status === 'error' ? <WarningIcon className='gh-portal-notification-icon error' alt=''/> : <CheckmarkIcon className='gh-portal-notification-icon success' alt=''/>)}
                     <NotificationText type={type} status={status} context={this.context} />
-                    <CloseIcon className='gh-portal-notification-closeicon' alt='Close' onClick={e => this.onNotificationClose(e)} />
+                    <CloseIcon className='gh-portal-notification-closeicon' alt='Zamknij' onClick={e => this.onNotificationClose(e)} />
                 </div>
             </div>
         );

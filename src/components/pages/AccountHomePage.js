@@ -113,13 +113,13 @@ const AccountFooter = ({onClose, handleSignout, supportAddress = ''}) => {
     return (
         <footer className='gh-portal-account-footer'>
             <ul className='gh-portal-account-footermenu'>
-                <li><button className='gh-portal-btn' name='logout' aria-label='logout' onClick={e => handleSignout(e)}>Sign out</button></li>
+                <li><button className='gh-portal-btn' name='logout' aria-label='logout' onClick={e => handleSignout(e)}>Wyloguj się</button></li>
             </ul>
             <div className='gh-portal-account-footerright'>
                 <ul className='gh-portal-account-footermenu'>
                     <li><a className='gh-portal-btn gh-portal-btn-branded' href={supportAddressMail} onClick={() => {
                         supportAddressMail && window.open(supportAddressMail);
-                    }}>Contact support</a></li>
+                    }}>Napisz do mnie</a></li>
                 </ul>
             </div>
         </footer>
@@ -132,7 +132,7 @@ const UserHeader = () => {
     return (
         <header className='gh-portal-account-header'>
             <UserAvatar avatar={avatar} brandColor={brandColor} />
-            <h2 className="gh-portal-main-title">Your account</h2>
+            <h2 className="gh-portal-main-title">Twoje konto</h2>
         </header>
     );
 };
@@ -252,13 +252,13 @@ const AccountActions = () => {
         onAction('updateNewsletter', {subscribed: !sub});
     };
 
-    let label = subscribed ? 'Subscribed' : 'Unsubscribed';
+    let label = subscribed ? 'Subskrybujesz' : 'Nie subskrybujesz';
     return (
         <div>
             <div className='gh-portal-list'>
                 <section>
                     <div className='gh-portal-list-detail'>
-                        <h3>{(name ? name : 'Account')}</h3>
+                        <h3>{(name ? name : 'Konto')}</h3>
                         <p>{email}</p>
                     </div>
                     <button className='gh-portal-btn gh-portal-btn-list' onClick={e => openEditProfile(e)}>Edit</button>
@@ -268,7 +268,7 @@ const AccountActions = () => {
 
                 <section>
                     <div className='gh-portal-list-detail'>
-                        <h3>Email newsletter</h3>
+                        <h3>Newsletter</h3>
                         <p>{label}</p>
                     </div>
                     <div>
@@ -301,7 +301,7 @@ const SubscribeButton = () => {
     return (
         <ActionButton
             isRunning={isRunning}
-            label="View plans"
+            label="Zobacz możliwości wsparcia"
             onClick={() => openPlanPage()}
             brandColor={brandColor}
             style={{width: '100%'}}
@@ -328,14 +328,14 @@ const AccountWelcome = () => {
         }
         return (
             <div className='gh-portal-section'>
-                <p className='gh-portal-text-center gh-portal-free-ctatext'>Your subscription will renew on {getDateString(currentPeriodEnd)}</p>
+                <p className='gh-portal-text-center gh-portal-free-ctatext'>Subskrypcja odnowi się {getDateString(currentPeriodEnd)}</p>
             </div>
         );
     }
 
     return (
         <div className='gh-portal-section'>
-            <p className='gh-portal-text-center gh-portal-free-ctatext'>You currently have a free membership, upgrade to a paid subscription for full access.</p>
+            <p className='gh-portal-text-center gh-portal-free-ctatext'>Aktualnie subskrybujesz {site.title}, ale nie wspierasz. Kliknij poniżej, aby ustawić donacje.</p>
             <SubscribeButton />
         </div>
     );
@@ -352,7 +352,7 @@ const ContinueSubscriptionButton = () => {
     if (!subscription.cancel_at_period_end) {
         return null;
     }
-    const label = subscription.cancel_at_period_end ? 'Continue subscription' : 'Cancel subscription';
+    const label = subscription.cancel_at_period_end ? 'Wspieraj nadal' : 'Anuluj wsparcie';
     const isRunning = ['cancelSubscription:running'].includes(action);
     const disabled = (isRunning) ? true : false;
     const isPrimary = !!subscription.cancel_at_period_end;
@@ -363,7 +363,7 @@ const ContinueSubscriptionButton = () => {
         }
         const currentPeriodEnd = subscription.current_period_end;
         return (
-            <p className='gh-portal-text-center gh-portal-free-ctatext'>Your subscription will expire on {getDateString(currentPeriodEnd)}</p>
+            <p className='gh-portal-text-center gh-portal-free-ctatext'>Twoje wsparcie kończy się {getDateString(currentPeriodEnd)}</p>
         );
     };
 

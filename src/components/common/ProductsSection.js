@@ -671,8 +671,8 @@ function FreeProductCard() {
                     <Checkbox name='x' id='x' isChecked={selectedProduct === 'free'} onProductSelect={() => {
                         setSelectedProduct('free');
                     }} />
-                    <h4 className="gh-portal-product-name">Free</h4>
-                    <div className="gh-portal-product-description">Free preview of {(site.title)}</div>
+                    <h4 className="gh-portal-product-name">Darmowy</h4>
+                    <div className="gh-portal-product-description">Zawsze darmowy dostęp do całej treści {(site.title)}</div>
                 </div>
                 <div className="gh-portal-product-card-pricecontainer">
                     <div className="gh-portal-product-price">
@@ -691,13 +691,13 @@ function FreeProductCard() {
                 <Checkbox name='x' id='x' isChecked={selectedProduct === 'free'} onProductSelect={() => {
                     setSelectedProduct('free');
                 }} />
-                <h4 className="gh-portal-product-name">Free</h4>
+                <h4 className="gh-portal-product-name">Darmowy</h4>
                 <div className="gh-portal-product-price">
                     <span className="currency-sign">$</span>
                     <span className="amount">0</span>
                     <span className="billing-period">/{selectedInterval}</span>
                 </div>
-                <div className="gh-portal-product-description">Free preview of {(site.title)}</div>
+                <div className="gh-portal-product-description">Zawsze darmowy dostęp do całej treści {(site.title)}</div>
             </div>
         </>
     );
@@ -732,13 +732,13 @@ function ProductPriceSwitch({products, selectedInterval, setSelectedInterval}) {
 
     return (
         <div className="gh-portal-products-priceswitch">
-            <span className="gh-portal-priceoption-label monthly">Monthly</span>
+            <span className="gh-portal-priceoption-label monthly">Wsparcie miesięczne</span>
             <Switch id='product-interval' onToggle={(e) => {
                 const interval = selectedInterval === 'month' ? 'year' : 'month';
                 setSelectedInterval(interval);
             }} checked={selectedInterval === 'year'} />
             <span className="gh-portal-priceoption-label">
-                Yearly
+                Wsparcie roczne
                 <YearlyDiscount discount={yearlyDiscount} />
             </span>
         </div>
@@ -882,7 +882,7 @@ export function ChangeProductSection({onPlanSelect, selectedPlan, products, type
                     disabled={!selectedPrice?.id || (activePrice.id === selectedPrice?.id)}
                     isPrimary={true}
                     brandColor={brandColor}
-                    label={'Continue'}
+                    label={'Dalej'}
                     style={{height: '40px', width: '100%', marginTop: '24px'}}
                 />
             </section>

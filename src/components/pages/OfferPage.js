@@ -234,7 +234,7 @@ export default class OfferPage extends React.Component {
             {
                 type: 'email',
                 value: member?.email || state.email,
-                placeholder: 'jamie@example.com',
+                placeholder: 'karol@example.com',
                 label: 'Email',
                 name: 'email',
                 disabled: !!member,
@@ -249,8 +249,8 @@ export default class OfferPage extends React.Component {
             fields.unshift({
                 type: 'text',
                 value: member?.name || state.name,
-                placeholder: 'Jamie Larson',
-                label: 'Name',
+                placeholder: 'Jan Kowalski',
+                label: 'Imię i nazwisko',
                 name: 'name',
                 disabled: !!member,
                 required: true,
@@ -355,7 +355,7 @@ export default class OfferPage extends React.Component {
 
     renderSubmitButton() {
         const {action, brandColor} = this.context;
-        let label = 'Continue';
+        let label = 'Dalej';
 
         let isRunning = false;
         if (action === 'signup:running') {
@@ -391,13 +391,13 @@ export default class OfferPage extends React.Component {
         const {brandColor, onAction} = this.context;
         return (
             <div className='gh-portal-signup-message'>
-                <div>Already a member?</div>
+                <div>Jesteś już zapisany/a?</div>
                 <button
                     className='gh-portal-btn gh-portal-btn-link'
                     style={{color: brandColor}}
                     onClick={() => onAction('switchPage', {page: 'signin'})}
                 >
-                    <span>Sign in</span>
+                    <span>Zaloguj się</span>
                 </button>
             </div>
         );
@@ -501,11 +501,11 @@ export default class OfferPage extends React.Component {
 
         if (hasMultipleProductsFeature({site})) {
             return (
-                <h4 className="gh-portal-plan-name">{product.name} - {(offer.cadence === 'month' ? 'Monthly' : 'Yearly')}</h4>
+                <h4 className="gh-portal-plan-name">{product.name} - {(offer.cadence === 'month' ? 'Wsparcie miesięczne' : 'Wsparcie roczne')}</h4>
             );
         }
         return (
-            <h4 className="gh-portal-plan-name">{(offer.cadence === 'month' ? 'Monthly' : 'Yearly')}</h4>
+            <h4 className="gh-portal-plan-name">{(offer.cadence === 'month' ? 'Wsparcie miesięczne' : 'Wsparcie roczne')}</h4>
         );
     }
 
@@ -550,7 +550,7 @@ export default class OfferPage extends React.Component {
                                 {(!offer.display_title && !offer.display_description ?
                                     this.renderOfferTag()
                                     : '')}
-                                <h4 className="gh-portal-plan-name">{product.name} - {(offer.cadence === 'month' ? 'Monthly' : 'Yearly')}</h4>
+                                <h4 className="gh-portal-plan-name">{product.name} - {(offer.cadence === 'month' ? 'Wsparcie miesięczne' : 'Wsparcie roczne')}</h4>
                                 {(!benefits.length && !product.description ?
                                     this.renderOfferMessage({offer, product})
                                     : '')}

@@ -60,7 +60,7 @@ export default class SigninPage extends React.Component {
             {
                 type: 'email',
                 value: state.email,
-                placeholder: 'jamie@example.com',
+                placeholder: 'karol@example.com',
                 label: 'Email',
                 name: 'email',
                 required: true,
@@ -75,10 +75,10 @@ export default class SigninPage extends React.Component {
         const {action} = this.context;
         let retry = false;
         const isRunning = (action === 'signin:running');
-        let label = isRunning ? 'Sending login link...' : 'Continue';
+        let label = isRunning ? 'Wysyłanie linka do logowania…' : 'dalej';
         const disabled = isRunning ? true : false;
         if (action === 'signin:failed') {
-            label = 'Retry';
+            label = 'Spróbuj ponownie';
             retry = true;
         }
         return (
@@ -98,8 +98,8 @@ export default class SigninPage extends React.Component {
         const brandColor = this.context.brandColor;
         return (
             <div className='gh-portal-signup-message'>
-                <div>Don't have an account?</div>
-                <button className='gh-portal-btn gh-portal-btn-link' style={{color: brandColor}} onClick={() => this.context.onAction('switchPage', {page: 'signup'})}><span>Sign up</span></button>
+                <div>Nie jesteś jeszcze zapisany/a?</div>
+                <button className='gh-portal-btn gh-portal-btn-link' style={{color: brandColor}} onClick={() => this.context.onAction('switchPage', {page: 'signup'})}><span>Subskrybuj</span></button>
             </div>
         );
     }

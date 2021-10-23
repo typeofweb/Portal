@@ -371,7 +371,7 @@ class SignupPage extends React.Component {
             {
                 type: 'email',
                 value: state.email,
-                placeholder: 'jamie@example.com',
+                placeholder: 'karol@example.com',
                 label: 'Email',
                 name: 'email',
                 required: true,
@@ -385,8 +385,8 @@ class SignupPage extends React.Component {
             fields.unshift({
                 type: 'text',
                 value: state.name,
-                placeholder: 'Jamie Larson',
-                label: 'Name',
+                placeholder: 'Jan Kowalski',
+                label: 'Imię i nazwisko',
                 name: 'name',
                 required: true,
                 tabindex: 1,
@@ -409,7 +409,7 @@ class SignupPage extends React.Component {
             return null;
         }
 
-        let label = 'Continue';
+        let label = 'Dalej';
         if (hasOnlyFreePlan({site})) {
             label = 'Sign up';
         }
@@ -485,13 +485,13 @@ class SignupPage extends React.Component {
         const {brandColor, onAction} = this.context;
         return (
             <div className='gh-portal-signup-message'>
-                <div>Already a member?</div>
+                <div>Jesteś już zapisany/a?</div>
                 <button
                     className='gh-portal-btn gh-portal-btn-link'
                     style={{color: brandColor}}
                     onClick={() => onAction('switchPage', {page: 'signin'})}
                 >
-                    <span>Sign in</span>
+                    <span>Zaloguj się</span>
                 </button>
             </div>
         );

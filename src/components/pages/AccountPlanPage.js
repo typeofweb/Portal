@@ -37,17 +37,17 @@ const React = require('react');
 
 function getConfirmationPageTitle({confirmationType}) {
     if (confirmationType === 'changePlan') {
-        return 'Confirm subscription';
+        return 'Potwierdź subskrypcję';
     } else if (confirmationType === 'cancel') {
-        return 'Cancel subscription';
+        return 'Anuluj subskrypcję';
     } else if (confirmationType === 'subscribe') {
-        return 'Subscribe';
+        return 'Subskrybuj';
     }
 }
 
 const Header = ({onBack, showConfirmation, confirmationType}) => {
     const {member, brandColor, lastPage} = useContext(AppContext);
-    let title = isPaidMember({member}) ? 'Change plan' : 'Choose a plan';
+    let title = isPaidMember({member}) ? 'Przestań wspierać' : 'Zacznij wspierać';
     if (showConfirmation) {
         title = getConfirmationPageTitle({confirmationType});
     }
@@ -73,7 +73,7 @@ const CancelSubscriptionButton = ({member, onCancelSubscription, action, brandCo
     if (subscription.cancel_at_period_end) {
         return null;
     }
-    const label = 'Cancel subscription';
+    const label = 'Anuluj subskrypcję';
     const isRunning = ['cancelSubscription:running'].includes(action);
     const disabled = (isRunning) ? true : false;
     const isPrimary = !!subscription.cancel_at_period_end;
@@ -109,7 +109,7 @@ const PlanConfirmationSection = ({plan, type, onConfirm}) => {
     const [reason, setReason] = useState('');
     const subscription = getMemberSubscription({member});
     const isRunning = ['updateSubscription:running', 'checkoutPlan:running', 'cancelSubscription:running'].includes(action);
-    const label = 'Confirm';
+    const label = 'Potwierdź';
     let planStartDate = getDateString(subscription.current_period_end);
     const currentActivePlan = getMemberActivePrice({member});
     if (currentActivePlan.id !== plan.id) {
@@ -125,7 +125,7 @@ const PlanConfirmationSection = ({plan, type, onConfirm}) => {
                 <div className='gh-portal-list outline mb6'>
                     <section>
                         <div className='gh-portal-list-detail'>
-                            <h3>Account</h3>
+                            <h3>Konto</h3>
                             <p>{member.email}</p>
                         </div>
                     </section>
@@ -274,7 +274,7 @@ const UpgradePlanSection = ({
                 isRunning={isRunning}
                 isPrimary={true}
                 brandColor={brandColor}
-                label={'Continue'}
+                label={'Dalej'}
                 style={{height: '40px', width: '100%', marginTop: '24px'}}
             />
         </section>
